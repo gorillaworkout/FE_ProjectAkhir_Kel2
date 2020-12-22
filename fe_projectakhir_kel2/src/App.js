@@ -27,7 +27,7 @@ import {LoginFunc,AddcartAction} from './redux/Actions'
 import notfound from './pages/notfound';
 import bayuTest from './../src/pages/Product/newDetailParcel'
 import Test from './components/test'
-
+import ProductDetail from './../src/pages/Product/productDetail'
 function App(props) {
   
   const Auth=useSelector(state=>state.Auth)
@@ -96,6 +96,7 @@ function App(props) {
         <Route exact path='/dataproduct' component={DataProduct}/>
         <Route exact path ='/useraccount' component={MyAccount}/>
         <Route exact path='/detailParcel/:id' component={DetailParcel}/>
+        <Route exact path='/productdetail' component={ProductDetail}/>
         <Route exact path ='/cart' component={CartPage}/>
         <Route exact path ='/hapusaja' component={Example}/>
         <Route exact path ='/bayutest/:id' component={bayuTest}/>

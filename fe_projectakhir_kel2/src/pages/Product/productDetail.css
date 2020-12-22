@@ -1,0 +1,58 @@
+.product-header{
+    background-color:red;
+    height:100vh;
+    width:100%;
+    display:flex;
+    flex-direction: row;
+}
+
+.product-kiri{
+    height:83vh;
+    width:50%;
+    flex-wrap: wrap;
+    background-color: turquoise;
+    padding-left: 10%;
+    padding-right:5%;
+    margin-top: 100px;
+    
+    
+}
+.product-kanan{
+    height:83vh;
+    width:50%;
+    flex-wrap: wrap;
+    background-color: tomato;
+    padding-right:5%;
+    margin-top: 100px;
+}
+.favorite{
+    display: flex;
+    flex-direction: row;
+    height:100px;
+    width:100%;
+    margin-top:30px;
+    
+}
+.fav-kiri{
+    display:flex;
+    flex-direction:row;
+    /* margin-left:20px; */
+    width:50%;
+    /* background-color:blue; */
+    height:30px;
+    justify-content: center;
+}
+.fav-kanan{
+    display:flex;
+    flex-direction:row;
+    /* margin-left:20px; */
+    width:50%;
+    /* background-color:red; */
+    height:30px;
+    justify-content: center;
+}
+.star{
+    margin-top:-20px;
+    display:flex;
+    flex-direction: row;
+}
