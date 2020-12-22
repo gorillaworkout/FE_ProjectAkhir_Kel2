@@ -102,7 +102,7 @@ class ProductDetail extends Component {
                             <div className="harga">
                                 <p>Rp 8.000</p>
                                 
-                                <p>Tersedia > 10 Stok Barang</p>
+                                <p>Tersedia lebih dari 10 Stok Barang</p>
                             </div>
 
                         </div>
