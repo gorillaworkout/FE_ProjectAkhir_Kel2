@@ -5,9 +5,49 @@ import {AiOutlineLogout,AiFillHome,AiFillDelete,AiOutlineHeart,AiOutlineShareAlt
 import Logo from './../../assets/logo.png'
 import {BiPlus,BiMinus,BiCart,BiUser} from 'react-icons/bi'
 import {Dropdown} from 'react-bootstrap'
+import Parcel1 from './../../assets/parcel1.jpg'
+import Axios from 'axios'
+import { API_URL_SQL } from '../../helpers/apiUrl';
+import { FullPageLoading } from './../../components/loading';
+import { Link } from 'react-router-dom'
 class ProductDetail extends Component {
-    state = {  }
+    state = { 
+        dataParcel:[],
+        loading:true
+     }
+
+     componentDidMount(){
+        Axios.get(`${API_URL_SQL}/product/getDataParcelById/10`)
+        .then((res)=>{
+            console.log(res.data,' res data')
+            this.setState({dataParcel:res.data,loading:false})
+        }).catch((err)=>{
+            console.log(err)
+        })
+     }
+
+     renderProduct=()=>{
+         return this.state.dataParcel.map((val,index)=>{
+            return (
+                <>
+                    <li>{val.qty} {val.namaProduct}</li>
+                </>
+            )
+         })
+     }
+
+
+
     render() { 
+        
+        if(this.state.loading){
+            return (
+                <div className='d-flex justify-content-center align-items-center' style={{height:"100vh", width:"100vw"}}>
+                    {FullPageLoading(this.state.loading,100,'#0095DA')}
+                </div>
+
+            )
+        }
         return ( 
             <>
                 <h1>Product Details</h1>
@@ -72,7 +112,7 @@ class ProductDetail extends Component {
                     <div className="product-header">
                         <div className="product-kiri">
                             <div className="img-kiri">
-                                <img src={Logo} alt="asd" style={{height:'200px', width:'400px'}}/>
+                                <img src={Parcel1} alt="asd" style={{height:'300px', width:'400px'}}/>
                             </div>
                             <div className="favorite">
                                 <div className="fav-kiri">
@@ -86,23 +126,61 @@ class ProductDetail extends Component {
                             </div>
                         </div>
                         <div className="product-kanan">
-                            <div className="prod-kanan">
-                                <p style={{fontSize:'30px'}}>Pocari Sweat Botol 350ml</p>
-                                <div className="star">
-                                    <div>
-                                        <AiFillStar color="#0984e3" size="20" style={{cursor:"pointer", marginRight:'10px'}}/>
-                                        <AiFillStar color="#0984e3" size="20" style={{cursor:"pointer", marginRight:'10px'}}/>
-                                        <AiFillStar color="#0984e3" size="20" style={{cursor:"pointer", marginRight:'10px'}}/>
-                                        <AiFillStar color="#0984e3" size="20" style={{cursor:"pointer", marginRight:'10px'}}/>
-                                        <AiFillStar color="#0984e3" size="20" style={{cursor:"pointer", marginRight:'10px'}}/>
+                            <div className="product-div-kiri">
+                                <div className="prod-kanan">
+                                    <p style={{fontSize:'30px'}}>{this.state.dataParcel[0].namaParcel}</p>
+                                    <div className="star">
+                                        <div>
+                                            <AiFillStar color="#0984e3" size="20" style={{cursor:"pointer", marginRight:'10px'}}/>
+                                            <AiFillStar color="#0984e3" size="20" style={{cursor:"pointer", marginRight:'10px'}}/>
+                                            <AiFillStar color="#0984e3" size="20" style={{cursor:"pointer", marginRight:'10px'}}/>
+                                            <AiFillStar color="#0984e3" size="20" style={{cursor:"pointer", marginRight:'10px'}}/>
+                                            <AiFillStar color="#0984e3" size="20" style={{cursor:"pointer", marginRight:'10px'}}/>
+                                        </div>
+                                        <p>490 Ulasan</p>
                                     </div>
-                                    <p>490 Ulasan</p>
                                 </div>
-                            </div>
-                            <div className="harga">
-                                <p>Rp 8.000</p>
+                                <div className="harga">
+                                    <p style={{fontSize:'20px',fontWeight:'600'}}>Rp .{this.state.dataParcel[0].harga}</p>
+                                    
+                                    <p>Tersedia  10 Stok Parcel</p>
+                                </div>
+
                                 
-                                <p>Tersedia lebih dari 10 Stok Barang</p>
+
+                                <div className="information-product">
+                                    {/* <div className="description">
+                                        <p style={{fontSize:'25px'}}>Description:</p>
+                                        <p style={{fontSize:'20px',marginLeft:'10px',marginTop:'5px'}}>Parcel Sehat murah</p>
+                                    </div> */}
+
+                                    <p style={{fontSize:'20px',fontWeight:'600'}}>Custom Your Parcel:</p>
+                                    <ul>
+                                    {this.renderProduct()}
+                                    </ul>
+                                </div>
+
+                                <div className="button-div">
+                                    <Link to={'/detailparcel/'+this.props.match.params.id}>
+                                        <div className="button-beli">
+                                            <p>Beli</p>
+                                        </div>
+                                    </Link>
+                                </div>
+
+                            </div>
+                            <div className="product-div-kanan">
+                                        <div className="lay-prod">
+                                            <p>Layanan Product</p>
+                                        </div>
+                                        <div>
+                                            <ul>
+                                                <li>Cash On Delivery</li>
+                                                <li>Cash On Pickup</li>
+                                                <li>Ambil di Toko</li>
+                                                <li>GO-JEK</li>
+                                            </ul>
+                                        </div>
                             </div>
 
                         </div>

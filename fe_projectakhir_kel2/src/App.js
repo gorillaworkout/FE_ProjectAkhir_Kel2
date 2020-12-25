@@ -96,7 +96,7 @@ function App(props) {
         <Route exact path='/dataproduct' component={DataProduct}/>
         <Route exact path ='/useraccount' component={MyAccount}/>
         <Route exact path='/detailParcel/:id' component={DetailParcel}/>
-        <Route exact path='/productdetail' component={ProductDetail}/>
+        <Route exact path='/productdetail/:id' component={ProductDetail}/>
         <Route exact path ='/cart' component={CartPage}/>
         <Route exact path ='/hapusaja' component={Example}/>
         <Route exact path ='/bayutest/:id' component={bayuTest}/>

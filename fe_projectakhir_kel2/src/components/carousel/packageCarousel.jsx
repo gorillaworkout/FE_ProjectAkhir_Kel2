@@ -18,7 +18,7 @@ export default (props) => {
                 return (
                     <div className="card" key={val.id}>
                         <div className="Bx">
-                            <Link to={'/detailparcel/'+val.id} style={{textDecoration:"none"}}>
+                            <Link to={'/productdetail/'+val.id} style={{textDecoration:"none"}}>
                                 <div className="content">
                                     <div className="tag">
                                         Oncoming Event

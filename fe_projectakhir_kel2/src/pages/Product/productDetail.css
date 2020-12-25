@@ -1,5 +1,5 @@
 .product-header{
-    background-color:red;
+    /* background-color:red; */
     height:100vh;
     width:100%;
     display:flex;
@@ -10,7 +10,7 @@
     height:83vh;
     width:50%;
     flex-wrap: wrap;
-    background-color: turquoise;
+    /* background-color: turquoise; */
     padding-left: 10%;
     padding-right:5%;
     margin-top: 100px;
@@ -21,10 +21,15 @@
     height:83vh;
     width:50%;
     flex-wrap: wrap;
-    background-color: tomato;
+    /* background-color: tomato; */
     padding-right:5%;
     margin-top: 100px;
+    padding-left:20px;
+    border-left:3px dotted gray;
+    display:flex;
+    flex-direction: row;
 }
+
 .favorite{
     display: flex;
     flex-direction: row;
@@ -55,4 +60,75 @@
     margin-top:-20px;
     display:flex;
     flex-direction: row;
+}
+
+.img-kiri{
+    margin-top:50px;
+}
+
+.prod-kanan{
+    margin-top:50px;
+    
+}
+
+.button-div{
+    /* background-color:red; */
+    height:50px;
+    width:100px;
+}
+
+.button-beli{
+    background-color:#158ae6;
+    height:40px;
+    width:100px;
+    border-radius:10px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:20px;
+}
+.button-beli:hover{
+     background-color:red;
+     cursor: pointer;
+}
+.button-beli p{
+    font-size:25px;
+    color:white;
+    margin-top:10px;
+}
+.description{
+    /* background-color:red; */
+    width:100%;
+    height:80px;
+    display:flex;
+   flex-direction: row;
+}
+
+.product-div-kiri{
+    /* background-color:red; */
+    width:60%;
+    height:500px;
+    border-right:2px dotted gray;
+    /* height:100vh; */
+}
+
+.product-div-kanan{
+    /* background-color:black; */
+    width:40%;
+    height:500px;
+    /* height:100vh; */
+}
+
+.lay-prod{
+    background-color:#158ae6;
+    height:50px;
+    width:100%;
+    display:flex;
+    justify-content: center;
+    margin-left:10px;
+    border-radius:10px;
+}
+.lay-prod p{
+    font-size:25px;
+    color:white;
 }
