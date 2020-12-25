@@ -11,6 +11,7 @@ import { API_URL_SQL } from '../../helpers/apiUrl';
 import { FullPageLoading } from './../../components/loading';
 import { Link } from 'react-router-dom'
 import {BsCheck} from 'react-icons/bs'
+import numeral from 'numeral';
 class ProductDetail extends Component {
     state = { 
         dataParcel:[],
@@ -142,7 +143,7 @@ class ProductDetail extends Component {
                                     </div>
                                 </div>
                                 <div className="harga">
-                                    <p style={{fontSize:'20px',fontWeight:'600'}}>Rp .{this.state.dataParcel[0].harga}</p>
+                                    <p style={{fontSize:'20px',fontWeight:'600'}}>Rp{numeral(this.state.dataParcel[0].harga).format('0,0')}</p>
                                     
                                     <p>Tersedia  10 Stok Parcel</p>
                                 </div>
