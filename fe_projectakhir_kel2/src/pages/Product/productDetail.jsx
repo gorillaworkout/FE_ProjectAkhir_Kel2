@@ -10,6 +10,7 @@ import Axios from 'axios'
 import { API_URL_SQL } from '../../helpers/apiUrl';
 import { FullPageLoading } from './../../components/loading';
 import { Link } from 'react-router-dom'
+import {BsCheck} from 'react-icons/bs'
 class ProductDetail extends Component {
     state = { 
         dataParcel:[],
@@ -173,13 +174,13 @@ class ProductDetail extends Component {
                                         <div className="lay-prod">
                                             <p>Layanan Product</p>
                                         </div>
-                                        <div>
-                                            <ul>
-                                                <li>Cash On Delivery</li>
-                                                <li>Cash On Pickup</li>
-                                                <li>Ambil di Toko</li>
-                                                <li>GO-JEK</li>
-                                            </ul>
+                                        <div style={{paddingLeft:'20px',paddingTop:'20px'}}>
+            
+                                                <p><BsCheck style={{color:'green',fontSize:'25px'}}/> Cash On Delivery</p> 
+                                                <p><BsCheck style={{color:'green',fontSize:'25px'}}/>Cash On Pickup</p>
+                                                <p><BsCheck style={{color:'green',fontSize:'25px'}}/>Ambil di Toko</p>
+                                                <p><BsCheck style={{color:'green',fontSize:'25px'}}/>GO-JEK</p>
+                                            
                                         </div>
                             </div>
 
