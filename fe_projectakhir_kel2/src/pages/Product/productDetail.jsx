@@ -12,10 +12,13 @@ import { FullPageLoading } from './../../components/loading';
 import { Link } from 'react-router-dom'
 import {BsCheck} from 'react-icons/bs'
 import numeral from 'numeral';
+import dParcel from '../../assets/d_parcel.png'
+import HorizontalScroll from 'react-scroll-horizontal'
 class ProductDetail extends Component {
     state = { 
         dataParcel:[],
-        loading:true
+        loading:true,
+        randomData:[]
      }
 
      componentDidMount(){
@@ -26,6 +29,15 @@ class ProductDetail extends Component {
         }).catch((err)=>{
             console.log(err)
         })
+
+        Axios.get(`${API_URL_SQL}/product/getRandomProduct/4`)
+        .then((res)=>{
+            console.log(res.data)
+            this.setState({randomData:res.data.productParcel})
+        }).catch((err)=>{
+            console.log(err)
+        })
+
      }
 
      renderProduct=()=>{
@@ -38,6 +50,23 @@ class ProductDetail extends Component {
          })
      }
 
+     renderRandomParcel=()=>{
+         return this.state.dataParcel.map((val,index)=>{
+             return (
+                 <>
+                 <div className="card card-css" style={{width:'10rem'}}>
+                        <img className="card-img-top" src={val.gambar} alt="Card image cap"/>
+                        <div className="card-body">
+                            <h5 className="card-title">{val.nama}</h5>
+                            <p className="card-text">{val.deskripsi}</p>                           
+                            <a href={'/productdetail/' + val.id} className="btn btn-primary" onClick={()=>this.productRandomParcel(val.id)}> Beli</a>
+                        </div>
+                    </div>
+
+                 </>
+             )
+         })
+     }
 
 
     render() { 
@@ -118,15 +147,21 @@ class ProductDetail extends Component {
                             </div>
                             <div className="favorite">
                                 <div className="fav-kiri">
-                                    <AiOutlineHeart color="#0984e3" size="25" style={{cursor:"pointer", marginRight:'10px'}}/>
+                                    <AiOutlineHeart color="tomato" size="25" style={{cursor:"pointer", marginRight:'10px'}}/>
                                     <p>Favoritkan</p>
                                 </div>
                                 <div className="fav-kanan">
-                                    <AiOutlineShareAlt color="#0984e3" size="25" style={{cursor:"pointer", marginRight:'10px'}}/>
+                                    <AiOutlineShareAlt color="tomato" size="25" style={{cursor:"pointer", marginRight:'10px'}}/>
                                     <p>Bagikan</p>
                                 </div>
                             </div>
-                        </div>
+                            <div  className="random-cart2">
+                                    <HorizontalScroll>
+                                                    {this.renderRandomParcel()}
+                                    </HorizontalScroll>
+                            </div>
+                           
+                            </div>
                         <div className="product-kanan">
                             <div className="product-div-kiri">
                                 <div className="prod-kanan">
@@ -183,11 +218,15 @@ class ProductDetail extends Component {
                                                 <p><BsCheck style={{color:'green',fontSize:'25px'}}/>GO-JEK</p>
                                             
                                         </div>
+                                        <div className="hadiah">
+                                            <img src={dParcel} alt="parcel" style={{height:'150px',width:'150px'}}/>
+                                        </div>
                             </div>
 
                         </div>
                     </div>
 
+                                    
 
                 </div>
             </>
